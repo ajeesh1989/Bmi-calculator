@@ -33,19 +33,20 @@ class _BmiCalculatorState extends State<BmiCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 13, 28, 52),
       appBar: AppBar(
         title: const Text(
           "Bmi calculator",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
         elevation: 0,
-        backgroundColor: const Color(0xfffafafa),
+        backgroundColor: const Color.fromARGB(255, 13, 28, 52),
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Icon(
               Icons.settings,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
         ],
@@ -68,19 +69,22 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               ),
               const Text(
                 'Your Height in Cm :',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
               const SizedBox(
                 height: 8,
               ),
               TextField(
+                style: const TextStyle(color: Colors.white, fontSize: 25),
                 controller: heightController,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   hintText: "Your Height in Cm",
+                  hintStyle:
+                      const TextStyle(color: Colors.white38, fontSize: 20),
                   filled: true,
-                  fillColor: Colors.grey[200],
+                  fillColor: const Color.fromARGB(255, 47, 58, 77),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide.none,
@@ -92,19 +96,22 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               ),
               const Text(
                 'Your Weight in Kg :',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
               const SizedBox(
                 height: 8,
               ),
               TextField(
+                style: const TextStyle(color: Colors.white, fontSize: 25),
                 controller: weightController,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   hintText: "Your Weight in Kg",
+                  hintStyle:
+                      const TextStyle(color: Colors.white38, fontSize: 20),
                   filled: true,
-                  fillColor: Colors.grey[200],
+                  fillColor: const Color.fromARGB(255, 47, 58, 77),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: BorderSide.none,
@@ -114,19 +121,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               const SizedBox(
                 height: 25,
               ),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                    onPressed: () {
-                      double height = double.parse(heightController.value.text);
-                      double weight = double.parse(weightController.value.text);
-                      calculateBmi(height, weight);
-                    },
-                    child: const Text('Calculate')),
-              ),
               const SizedBox(
-                height: 30,
+                height: 50,
               ),
               const SizedBox(
                 width: double.infinity,
@@ -134,8 +130,23 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   'Your BMI is :',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    result,
+                    style: const TextStyle(
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                 ),
               ),
@@ -144,16 +155,16 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               ),
               SizedBox(
                 width: double.infinity,
-                child: Center(
-                  child: Text(
-                    result,
-                    style: const TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                height: 60,
+                child: ElevatedButton(
+                  onPressed: () {
+                    double height = double.parse(heightController.value.text);
+                    double weight = double.parse(weightController.value.text);
+                    calculateBmi(height, weight);
+                  },
+                  child: const Text('Calculate'),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -188,7 +199,9 @@ class _BmiCalculatorState extends State<BmiCalculator> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
-            backgroundColor: currentIndex == index ? color : Colors.grey[200],
+            backgroundColor: currentIndex == index
+                ? color
+                : const Color.fromARGB(255, 47, 58, 77),
           ),
           child: Text(
             value,
