@@ -35,20 +35,32 @@ class _BmiCalculatorState extends State<BmiCalculator> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 13, 28, 52),
       appBar: AppBar(
-        title: const Text(
-          "Bmi calculator",
-          style: TextStyle(color: Colors.white),
+        title: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            "Bmi calculator",
+            style: TextStyle(color: Colors.white, fontSize: 25),
+          ),
         ),
         elevation: 0,
         backgroundColor: const Color.fromARGB(255, 13, 28, 52),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => const BmiCalculator()),
+              );
+            },
             icon: const Icon(
-              Icons.settings,
+              Icons.replay_outlined,
               color: Colors.white,
             ),
           ),
+          const SizedBox(
+            width: 10,
+          )
         ],
       ),
       body: SingleChildScrollView(
